@@ -9,12 +9,11 @@ const SpouseFields = (props) => {
         <TextField
           type='number'
           name='spouseInfo.id'
-          label='Physician Id'
+          label='Spouse Id'
           value={props.values.spouseInfo.id}
           onChange={props.handleChange}
           variant='outlined'
         />
-
         <TextField
           name='spouseInfo.firstName'
           label='First Name'
