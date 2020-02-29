@@ -4,7 +4,7 @@ import PhysicianFields from './InputFields/PhysicianFields';
 import SpouseFields from './InputFields/SpouseFields';
 import { Formik } from 'formik';
 import { Button } from '@material-ui/core';
-
+import styles from './UserProfile.module.css';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: 200,
-    },
-  },
+    }
+  }
 }));
 
 const UserProfile = (props) => {
@@ -25,12 +25,11 @@ const UserProfile = (props) => {
         {({ values, handleChange, handleSubmit }) => (
           <form className={classes.root} onSubmit={handleSubmit}>
             {/* //? Fields including User, Physician, & Spouse */}
-            <UserFields values={values} handleChange={handleChange} />
-            <hr />
-            <PhysicianFields values={values} handleChange={handleChange} />
-            <hr />
-            <SpouseFields values={values} handleChange={handleChange} />
-
+            <div className={styles.container}>
+              <UserFields values={values} handleChange={handleChange} className={styles.user} />
+              <PhysicianFields values={values} handleChange={handleChange} className={styles.physician} />
+              <SpouseFields values={values} handleChange={handleChange} className={styles.spouse} />
+            </div>
             {/* //? Submit Button */}
             <Button variant='contained' color='primary' type='submit'>Submit</Button>
             <pre>{JSON.stringify(values, null, 2)}</pre> {/* //! Used for testing purposes */}

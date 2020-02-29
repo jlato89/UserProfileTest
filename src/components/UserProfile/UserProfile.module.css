@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'user physician spouse';
+}
+.user {
+  grid-area: user;
+}
+.physician {
+  grid-area: physician;
+}
+.spouse {
+  grid-area: spouse;
+}
