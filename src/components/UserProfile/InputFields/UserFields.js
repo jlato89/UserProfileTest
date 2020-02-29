@@ -74,6 +74,29 @@ const UserFields = (props) => {
           onChange={props.handleChange}
           variant='outlined'
         />
+        <TextField
+          name='userInfo.mailingAddress.street'
+          label='Street Address'
+          value={props.values.userInfo.mailingAddress.street}
+          onChange={props.handleChange}
+          variant='outlined'
+        />
+        <TextField
+          type='number'
+          name='userInfo.mailingAddress.zip'
+          label='Zip Code'
+          value={props.values.userInfo.mailingAddress.zip}
+          onChange={props.handleChange}
+          variant='outlined'
+        />
+        <TextField
+          name='userInfo.mailingAddress.country'
+          label='Country'
+          value={props.values.userInfo.mailingAddress.country}
+          onChange={props.handleChange}
+          variant='outlined'
+        />
+
       </FormControl>
     </div>
   )

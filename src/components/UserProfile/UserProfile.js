@@ -42,7 +42,10 @@ const UserProfile = (props) => {
 
 const defaultValues = {
   userInfo: {
-    firstName: '', middleName: '', surName: '', dob: '', gender: '', phoneNo: '', email: '', local: ''
+    firstName: '', middleName: '', surName: '', dob: '', gender: '', phoneNo: '', email: '', local: '',
+    mailingAddress: {
+      street: '', zip: '', country: ''
+    }
   },
   physicianInfo: {
     id: '', firstName: '', middleName: '', surName: '', gender: '', phoneNo: '', email: ''
