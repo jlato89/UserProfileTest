@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { Button } from '@material-ui/core';
 import styles from './UserProfile.module.css';
 import { makeStyles } from '@material-ui/core/styles';
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,11 +18,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UserProfile = (props) => {
+  console.log('From Redux Store', props);
+  const { userProfile } = props;
   const classes = useStyles();
   return (
     <div>
       <h2> Hello User</h2>
-      <Formik initialValues={defaultValues} onSubmit={data => { console.log(data); }}>
+      <Formik
+        initialValues={userProfile}
+        onSubmit={data => {
+          console.log(data);
+          props.updateUserInfo(data);
+        }}
+      >
         {({ values, handleChange, handleSubmit }) => (
           <form className={classes.root} onSubmit={handleSubmit}>
             {/* //? Fields including User, Physician, & Spouse */}
@@ -40,19 +49,15 @@ const UserProfile = (props) => {
   )
 }
 
-const defaultValues = {
-  userInfo: {
-    firstName: '', middleName: '', surName: '', dob: '', gender: '', phoneNo: '', email: '', local: '',
-    mailingAddress: {
-      street: '', zip: '', country: ''
-    }
-  },
-  physicianInfo: {
-    id: '', firstName: '', middleName: '', surName: '', gender: '', phoneNo: '', email: ''
-  },
-  spouseInfo: {
-    id: '', firstName: '', middleName: '', surName: '', gender: '', dob: ''
+const mapStateToProps = (state) => {
+  return {
+    userProfile: state.userProfile
   }
 }
 
-export default UserProfile
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateUserInfo: (userInfo) => { dispatch({ type: 'UPDATE_USER', userInfo }) }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
