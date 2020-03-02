@@ -12,8 +12,7 @@ const initState = {
     spouseInfo: {
       id: '', firstName: '', middleName: '', surName: '', gender: '', dob: ''
     }
-
-  }
+  }   //* will need to restructure if wanting to store more than one userProfile
 }
 
 const rootReducer = (state = initState, action) => {
@@ -26,7 +25,6 @@ const rootReducer = (state = initState, action) => {
     default:
       return state
   }
-  // return state;
 }
 
 export default rootReducer
