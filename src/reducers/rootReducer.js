@@ -17,13 +17,12 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-  console.log(action);
+  console.log('previous state', state);
+  console.log('current payload', action.payload);
   switch (action.type) {
     case 'UPDATE_USER':
-      return {
-        ...state, userProfile:
-          [...state.userProfile, action.userInfo]
-      }
+      return { ...state, userProfile: action.payload }
+
     default:
       return state
   }
