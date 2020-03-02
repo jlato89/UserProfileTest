@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UserProfile = (props) => {
-  console.log('From Redux Store', props);
+  console.log('userProfile from Redux Store', props.userProfile);
   const { userProfile } = props;
   const classes = useStyles();
   return (
@@ -26,10 +26,7 @@ const UserProfile = (props) => {
       <h2> Hello User</h2>
       <Formik
         initialValues={userProfile}
-        onSubmit={data => {
-          console.log(data);
-          props.updateUserInfo(data);
-        }}
+        onSubmit={data => props.updateUserInfo(data)}
       >
         {({ values, handleChange, handleSubmit }) => (
           <form className={classes.root} onSubmit={handleSubmit}>
@@ -57,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUserInfo: (userInfo) => { dispatch({ type: 'UPDATE_USER', userInfo }) }
+    updateUserInfo: (userInfo) => { dispatch({ type: 'UPDATE_USER', payload: userInfo }) }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
