@@ -16,8 +16,8 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-  console.log('previous state', state);
-  console.log('current payload', action.payload);
+  // console.log('previous state', state);
+  // console.log('current payload', action.payload);
   switch (action.type) {
     case 'UPDATE_USER':
       return { ...state, userProfile: action.payload }
